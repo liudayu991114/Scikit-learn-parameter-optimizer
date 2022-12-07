@@ -140,17 +140,17 @@ def opt_without_label(func,c_list,i_list,label,alpha,max_iter,min_improve):
 
             #if there's no neighbor function value better than current or the change is too small
             #iteration over
-            if max[1]>current_value+min_improve and n_iter <=max_iter:
+            if max[1]>current_value+min_improve and n_iter <max_iter:
                 current_paraset=max[0]
                 current_value=max[1]
                 print(f"{n_iter+1}th iteration ------- value: {current_value}")
                 n_iter+=1
-            elif max[1]>current_value:
-                convergence=True
-                print(f"Converged because of lower improvement than limitation({min_improve})!")
             elif n_iter >=max_iter:
                 convergence=True
                 print(f"Maximum number of iterations {max_iter} reached!")
+            elif max[1]>current_value:
+                convergence=True
+                print(f"Converged because of lower improvement than limitation({min_improve})!")
             else:
                 convergence=True
                 print("Converged because of local maximum reached!")
